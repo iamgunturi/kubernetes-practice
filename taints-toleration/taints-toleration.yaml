@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: taints-toleration-pod
+  labels:
+    purpose: demonstrate-taints-toleration
+spec: 
+  containers:
+    - name: myapp-container
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+  tolerations:
+    - key: "gpu"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: required-affinity-pod
+  labels:
+    purpose: demonstrate-required-affinity  
+spec:
+  containers:
+    - name: myapp-container
+      image: nginx:latest
+      ports:
+        - containerPort: 80 
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: disk-type
+                operator: In
+                values:
+                  - ssd

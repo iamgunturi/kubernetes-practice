@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: pod-without-scheduler
+  labels:
+    purpose: demonstrate-pod-without-scheduler  
+spec:
+  nodeName: cka-cluster-worker2
+  containers:
+    - name: myapp-container
+      image: nginx:latest
+      ports:
+        - containerPort: 80
